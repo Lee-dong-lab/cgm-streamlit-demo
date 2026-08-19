@@ -1,0 +1,40 @@
+{
+  "model_name": "Model3_top20",
+  "target": "target_next_day_mean_glucose",
+  "features": [
+    "mean_glucose",
+    "roll3_mean_glucose",
+    "d_cv",
+    "steps",
+    "roll3_d_tar",
+    "diff_mean_from_prev_day",
+    "lag1_sleep_total_min",
+    "lag1_steps",
+    "lag1_mean_glucose",
+    "diff_steps_from_prev_day",
+    "diff_d_cv_from_prev_day",
+    "lag1_d_cv",
+    "sleep_rem_min",
+    "sleep_light_min",
+    "sleep_deep_min",
+    "roll3_steps",
+    "diff_sleep_from_prev_day",
+    "sleep_total_min",
+    "d_tir",
+    "diff_d_tir_from_prev_day"
+  ],
+  "label_threshold": 140.0,
+  "optimal_threshold": 144.35904931267194,
+  "lgb_params": {
+    "objective": "regression",
+    "metric": "rmse",
+    "n_estimators": 300,
+    "learning_rate": 0.03,
+    "random_state": 42,
+    "verbosity": -1,
+    "n_jobs": -1
+  },
+  "rmse_oof": 23.476132184572034,
+  "mae_oof": 16.265952134192013,
+  "zone_ab_pct_oof": 98.96103896103897
+}

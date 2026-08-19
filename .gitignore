@@ -29,4 +29,4 @@ figures_top20/
 
 # Keep demo artifact
 !streamlit_demo/artifacts/
-!streamlit_demo/artifacts/*.joblib
+!streamlit_demo/artifacts/*
