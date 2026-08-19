@@ -16,8 +16,15 @@ if ! "$GH" auth status >/dev/null 2>&1; then
   exit 1
 fi
 
+ACCOUNT=$("$GH" api user -q .login)
+REMOTE_URL="https://github.com/${ACCOUNT}/${REPO_NAME}.git"
+
 if git remote get-url origin >/dev/null 2>&1; then
   echo "origin 이미 존재 → push만 수행"
+  git push -u origin main
+elif "$GH" repo view "${ACCOUNT}/${REPO_NAME}" >/dev/null 2>&1; then
+  echo "저장소가 이미 존재함 → remote 연결 후 push: ${ACCOUNT}/${REPO_NAME}"
+  git remote add origin "$REMOTE_URL"
   git push -u origin main
 else
   echo "저장소 생성: $REPO_NAME ($VISIBILITY)"
@@ -31,4 +38,4 @@ fi
 
 echo ""
 echo "완료. 저장소 URL:"
-"$GH" repo view --web 2>/dev/null || git remote get-url origin
+"$GH" repo view "${ACCOUNT}/${REPO_NAME}" --json url -q .url 2>/dev/null || git remote get-url origin
