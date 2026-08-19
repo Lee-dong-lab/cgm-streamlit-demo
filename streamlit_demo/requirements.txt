@@ -1,0 +1,7 @@
+# CGM Streamlit 시뮬레이션 데모 — 배포/로컬 실행 의존성
+numpy>=1.24
+pandas>=2.0
+streamlit>=1.30
+plotly>=5.18
+lightgbm>=4.0
+joblib>=1.3
